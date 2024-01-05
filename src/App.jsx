@@ -7,6 +7,8 @@ function App() {
 	const [items, setItems] = useState(clothes)
 
 	const [filter, setFilter] = useState(items)
+
+	const [layout, setLayout] = useState("grid-cols-4")
 	const tagName = items.map(item => item.name)
 	return (
 		<>
@@ -15,8 +17,9 @@ function App() {
 				filter={filter}
 				setFilter={setFilter}
 				items={items}
+				setLayout={setLayout}
 			/>
-			<Body clothes={filter} setFilter={setFilter} />
+			<Body clothes={filter} setFilter={setFilter} layout={layout} />
 		</>
 	)
 }
