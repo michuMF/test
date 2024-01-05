@@ -1,4 +1,13 @@
-const Header = ({ tagName }) => {
+import { useState } from "react"
+
+const Header = ({ tagName, filter, setFilter, items }) => {
+	const [test, setTest] = useState(items)
+	const filterHandler = e => {
+		const filterTags = items.filter(item => {
+			return item.name === e
+		})
+		setFilter(filterTags)
+	}
 	return (
 		<div className=' '>
 			<nav>
@@ -6,7 +15,11 @@ const Header = ({ tagName }) => {
 					{tagName.map((item, index) => {
 						return (
 							<li key={index}>
-								<button className='border uppercase border-black bg-slate-50 rounded-md p-2'>
+								<button
+									onClick={e => {
+										filterHandler(e.target.innerHTML)
+									}}
+									className='border uppercase border-black bg-slate-50 rounded-md p-2'>
 									{item}
 								</button>
 							</li>
